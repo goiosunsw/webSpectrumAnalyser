@@ -5,6 +5,16 @@ registerProcessor('noise-generator', class extends AudioWorkletProcessor {
     super();
   }
 
+  static get parameterDescriptors () {
+    return [{
+      name: 'gain',
+      defaultValue: 1,
+      minValue: 0,
+      maxValue: 1,
+      automationRate: 'a-rate'
+    }]
+  }
+
   process (inputs, outputs, parameters) {
     const output = outputs[0];
 
@@ -13,7 +23,7 @@ registerProcessor('noise-generator', class extends AudioWorkletProcessor {
           let s = Math.random()*2-1;
           for (let chno=0; chno<output.length; ++chno)
           {
-                output[chno][i]=s;
+                output[chno][i]=s*(parameters['gain'].length > 1 ? parameters['gain'][i] : parameters['gain'][0]);
           }
       }
 

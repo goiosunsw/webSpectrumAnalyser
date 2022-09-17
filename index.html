@@ -8,10 +8,13 @@
         </style>
     </head>
     <body>
-        <canvas id="spec" width="400" height="300"></canvas>
-        <button type="button" id="start">Start</button>
+        <canvas id="spec" width="600" height="300"></canvas>
+        <p></p>
+        <button type="button" id="start">Measure</button>
+        <button type="button" id="exc">Noise</button>
         <p></p>
         <p id="nbr">N</p>
-        <script src="spectrumAnalyser.js"></script>
+        <script src="./ext/fft.js" type="module"></script>
+        <script src="spectrumAnalyser.js" type="module"></script>
     </body>
 </html>
